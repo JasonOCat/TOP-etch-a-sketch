@@ -6,6 +6,11 @@ function changeBackground(event) {
     event.target.style.backgroundColor = "green";
 }
 
+function addHoverListenersToSquares() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => square.addEventListener('mouseover', changeBackground));
+}
+
 
 
 function askGridSize() {
@@ -26,8 +31,7 @@ function askGridSize() {
     containerDiv.textContent = "";
 
     buildGrid(gridSize);
-    const squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.addEventListener('mouseover', changeBackground));
+    addHoverListenersToSquares() 
 }
 
 function buildGrid(gridSize) {
@@ -47,9 +51,7 @@ function clearGrid() {
 }
 
 
+// Start
 buildGrid(50);
-
-
-const squares = document.querySelectorAll('.square');
-squares.forEach(square => square.addEventListener('mouseover', changeBackground));
+addHoverListenersToSquares() 
 

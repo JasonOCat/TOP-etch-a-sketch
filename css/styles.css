@@ -1,3 +1,7 @@
+body {
+    
+}
+
 div {
     margin: 0;
     padding: 0;
@@ -20,7 +24,9 @@ div {
 
 .square {
     box-sizing: border-box;
-    border: 1px solid lightgrey;
+    /* trop lent si il ya le quadrillage  */
+    /* border-top: 1px solid lightgrey; */
+    
 }
 
 button.active {

@@ -8,10 +8,13 @@ document.body.onmouseup = () => (mouseDown = false)
 
 
 let currentColor = "green";
+let shadow = false;
 
 const rainbowColorBtn = document.querySelector('#btn-rainbow-color');
 const greenColorBtn = document.querySelector('#btn-green-color');
 const erazerBtn = document.querySelector('#btn-erazer');
+const shadowBtn = document.querySelector('#btn-shadow');
+
 
 rainbowColorBtn.onclick = () =>  {
     if (currentColor == 'rainbow') {
@@ -36,6 +39,12 @@ erazerBtn.onclick = () => {
     setCurrentColor('erazer');
     removeActive();
 };
+
+shadowBtn.onclick = () => {
+    shadow = !shadow;
+    shadowBtn.classList.toggle('active');
+    console.log(shadow);
+}
 
 function removeActive() {
     const squares = document.querySelectorAll('.square');
@@ -77,7 +86,7 @@ function changeColor(event) {
         return;
     }
  
-    if (event.target.classList.contains("active")) {
+    if (event.target.classList.contains("active") && shadow) {
         let brightness = event.target.getAttribute("data-brightness");
 
         if (brightness >= 20) {

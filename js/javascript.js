@@ -13,6 +13,9 @@ function askGridSize() {
     let isVadidSize = false;
     do {
         gridSize = prompt("Choose a grid size between 1 and 100");
+        if( gridSize === null) {
+            return;
+        }
         isVadidSize = !isNaN(gridSize) && gridSize >= 1 && gridSize <= 100;
         if (!isVadidSize) {
             alert("Wrong size format");

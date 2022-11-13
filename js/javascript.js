@@ -64,7 +64,10 @@ function buildGrid(gridSize) {
 
 function clearGrid() {
     const squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.style.backgroundColor = "white");
+    squares.forEach(square => {
+        square.style.backgroundColor = "white";
+        square.style.filter = "";
+    });
 }
 
 function getRandomRGBOneColor() {
@@ -77,7 +80,7 @@ function getRandomRGB() {
 
 
 // Start
-buildGrid(50);
+buildGrid(20);
 addHoverListenersToSquares()
 
 

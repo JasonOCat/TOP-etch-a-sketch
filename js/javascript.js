@@ -41,7 +41,13 @@ function buildGrid(gridSize) {
 
 }
 
-buildGrid(4);
+function clearGrid() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => square.style.backgroundColor = "white");
+}
+
+
+buildGrid(50);
 
 
 const squares = document.querySelectorAll('.square');

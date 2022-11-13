@@ -3,7 +3,22 @@
 const containerDiv = document.querySelector('.container');
 
 function changeBackground(event) {
-    event.target.style.backgroundColor = "green";
+    if (event.target.classList.contains("active")) {
+        let brightness = event.target.getAttribute("data-brightness");
+        if (brightness >= 20) {
+            brightness -= 20;
+            event.target.setAttribute("data-brightness", brightness);
+            event.target.style.filter = `brightness(${brightness}%)`;
+        }
+        else {
+            return;
+        }
+
+    } else {
+        event.target.classList.toggle("active");
+        event.target.style.backgroundColor = getRandomRGB();
+    }
+
 }
 
 function addHoverListenersToSquares() {
@@ -18,7 +33,7 @@ function askGridSize() {
     let isVadidSize = false;
     do {
         gridSize = prompt("Choose a grid size between 1 and 100");
-        if( gridSize === null) {
+        if (gridSize === null) {
             return;
         }
         isVadidSize = !isNaN(gridSize) && gridSize >= 1 && gridSize <= 100;
@@ -31,7 +46,7 @@ function askGridSize() {
     containerDiv.textContent = "";
 
     buildGrid(gridSize);
-    addHoverListenersToSquares() 
+    addHoverListenersToSquares()
 }
 
 function buildGrid(gridSize) {
@@ -39,6 +54,8 @@ function buildGrid(gridSize) {
     for (let i = 0; i < gridSize * gridSize; i++) {
         squareDiv = document.createElement('div');
         squareDiv.setAttribute('class', 'square');
+        squareDiv.style.filter = 'brightness(100%)';
+        squareDiv.setAttribute('data-brightness', 100);
         squareDiv.style.width = `calc(100% / ${gridSize})`;
         containerDiv.appendChild(squareDiv);
     }
@@ -50,8 +67,17 @@ function clearGrid() {
     squares.forEach(square => square.style.backgroundColor = "white");
 }
 
+function getRandomRGBOneColor() {
+    return Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+}
+
+function getRandomRGB() {
+    return `rgb(${getRandomRGBOneColor()}, ${getRandomRGBOneColor()}, ${getRandomRGBOneColor()})`
+}
+
 
 // Start
 buildGrid(50);
-addHoverListenersToSquares() 
+addHoverListenersToSquares()
+
 

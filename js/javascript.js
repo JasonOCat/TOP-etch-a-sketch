@@ -14,6 +14,7 @@ const rainbowColorBtn = document.querySelector('#btn-rainbow-color');
 const greenColorBtn = document.querySelector('#btn-green-color');
 const erazerBtn = document.querySelector('#btn-erazer');
 const shadowBtn = document.querySelector('#btn-shadow');
+const gridSizePara = document.querySelector('#grid-size');
 
 
 rainbowColorBtn.onclick = () =>  {
@@ -113,7 +114,10 @@ function changeColor(event) {
 
 function addHoverListenersToSquares() {
     const squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.addEventListener('mouseover', changeColor));
+    squares.forEach(square => {
+        square.addEventListener('mouseover', changeColor);
+        square.addEventListener('mousedown', changeColor);
+    });
 }
 
 
@@ -139,6 +143,7 @@ function askGridSize() {
 
 function buildGrid(gridSize) {
     let squareDiv;
+    gridSizePara.textContent = `Grid Size: ${gridSize}`;
     for (let i = 0; i < gridSize * gridSize; i++) {
         squareDiv = document.createElement('div');
         squareDiv.setAttribute('class', 'square');

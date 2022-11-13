@@ -11,46 +11,69 @@ let currentColor = "green";
 
 const rainbowColorBtn = document.querySelector('#btn-rainbow-color');
 const greenColorBtn = document.querySelector('#btn-green-color');
+const erazerBtn = document.querySelector('#btn-erazer');
 
 rainbowColorBtn.onclick = () =>  {
     if (currentColor == 'rainbow') {
         return;
     }
     setCurrentColor('rainbow');
-    const squares = document.querySelectorAll('.square');
-    squares.forEach(square => {
-        square.classList.remove("active");
-    })
+    removeActive();
 };
+
 greenColorBtn.onclick = () => {
     if (currentColor == 'green') {
         return;
     }
     setCurrentColor('green');
+    removeActive();
+};
+
+erazerBtn.onclick = () => {
+    if (currentColor == 'erazer') {
+        return;
+    }
+    setCurrentColor('erazer');
+    removeActive();
+};
+
+function removeActive() {
     const squares = document.querySelectorAll('.square');
     squares.forEach(square => {
         square.classList.remove("active");
     })
-};
+}
 
 function setCurrentColor(newColor) {
-    console.log(`update ${newColor}`)
     currentColor = newColor;
     updateButtonsColor(newColor);
 }
 
 function updateButtonsColor(newColor) {
     if (newColor === 'green') {
-        rainbowColorBtn.classList.remove("active");
         greenColorBtn.classList.add("active");
+        rainbowColorBtn.classList.remove("active");
+        erazerBtn.classList.remove("active");
+    } else if (newColor === 'erazer') {
+        erazerBtn.classList.add("active");
+        greenColorBtn.classList.remove("active");
+        rainbowColorBtn.classList.remove("active");
     } else {
         rainbowColorBtn.classList.add("active");
         greenColorBtn.classList.remove("active");
+        erazerBtn.classList.remove("active");
     }
 }
 
 function changeColor(event) {
     if (event.type === 'mouseover' && !mouseDown) {
+        return;
+    }
+
+    if (currentColor == "erazer") {
+        event.target.style.backgroundColor = "white";
+        event.target.setAttribute("data-brightness", 100);
+        event.target.style.filter = `brightness(100%)`;
         return;
     }
  
@@ -72,8 +95,7 @@ function changeColor(event) {
         event.target.style.filter = "brightness(100%)";
         if (currentColor == "green") {
             event.target.style.backgroundColor = "green";
-        }
-        else {
+        } else {
             event.target.style.backgroundColor = getRandomRGB();
         }
     }

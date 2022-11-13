@@ -111,7 +111,7 @@ function addHoverListenersToSquares() {
 function askGridSize() {
     let isVadidSize = false;
     do {
-        gridScurrentSizeize = prompt("Choose a grid size between 1 and 100");
+        currentGridSize = prompt("Choose a grid size between 1 and 100");
         if (currentGridSize === null) {
             return;
         }
@@ -124,7 +124,7 @@ function askGridSize() {
 
     containerDiv.textContent = "";
 
-    buildGrid(gridSize);
+    buildGrid(currentGridSize);
     addHoverListenersToSquares()
 }
 

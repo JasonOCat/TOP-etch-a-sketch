@@ -3,9 +3,15 @@ div {
     padding: 0;
 }
 
+#main {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
 .container {
-    width: 700px;
-    height: 700px;
+    width: 600px;
+    height: 600px;
     display : flex;
     margin: 0 auto;
     flex-wrap: wrap;
@@ -15,4 +21,8 @@ div {
 .square {
     box-sizing: border-box;
     border: 1px solid lightgrey;
+}
+
+button.active {
+    background-color : lightblue;
 }

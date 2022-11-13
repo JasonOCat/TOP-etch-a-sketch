@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>TOP Etch a sketch</title>
     <script src="js/javascript.js" defer></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-    <div>
-        <button onclick="askGridSize()">New Grid</button>
-    <div>
-    <br/>
-    <div>
-        <button onclick="clearGrid()">Clear</button>
+
+
+    <div id="main">
+        <div>
+            <h2>Game</h2>
+            <button onclick="askGridSize()">New Grid</button>
+
+            <br />
+            <br />
+
+            <button onclick="clearGrid()">Clear</button>
+        </div>
+
+        <div>
+            <h2>Color</h2>
+            <button id="btn-green-color" data-color="green" class="active">Green Pen</button>
+            <br />
+            <br />
+            <button id="btn-rainbow-color" data-color="rainbow">Rainbow Color</button>
+        </div>
     </div>
     <div class="container">
     </div>
-    
+
 </body>
+
 </html>
